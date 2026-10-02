@@ -25,7 +25,7 @@ export function FormRow({label, htmlFor, hint, children, className}: {label: str
 				</label>
 				{hint ? <p className='text-12 leading-tight text-white/40'>{hint}</p> : null}
 			</div>
-			<div className='flex min-w-0 flex-1 items-center justify-end gap-2'>{children}</div>
+			<div className='flex min-w-0 flex-[1_1_220px] items-center justify-end gap-2'>{children}</div>
 		</div>
 	)
 }

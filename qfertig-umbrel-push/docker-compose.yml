@@ -5,7 +5,7 @@ services:
       APP_PORT: 8765
 
   web:
-    image: ghcr.io/qfertig/umbrel-push:latest
+    image: ghcr.io/qfertig/umbrel-push:0.1.1
     restart: on-failure
     user: "1000:1000"
     stop_grace_period: 1m

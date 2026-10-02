@@ -27,6 +27,7 @@ export function ListRow({
 	children,
 	onClick,
 	label,
+	stackOnMobile,
 }: {
 	icon?: ReactNode
 	title: ReactNode
@@ -35,12 +36,15 @@ export function ListRow({
 	onClick?: MouseEventHandler
 	/** Accessible name for the row's button when the visible title is not enough on its own */
 	label?: string
+	/** Below the sm breakpoint, put the controls on their own line under the title instead of squeezing the title */
+	stackOnMobile?: boolean
 }) {
 	return (
 		<div
 			className={cn(
 				'settings-list-row relative flex min-h-[72px] w-full items-center justify-between gap-x-4 gap-y-2.5 px-5 py-3.5 text-left first:rounded-t-24 last:rounded-b-24',
 				'bg-linear-to-r from-transparent to-transparent hover:via-white/4',
+				stackOnMobile && 'flex-wrap sm:flex-nowrap',
 			)}
 		>
 			{onClick ? (
@@ -51,14 +55,14 @@ export function ListRow({
 					className='absolute inset-0 cursor-pointer rounded-[inherit] outline-hidden focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-inset active:bg-white/3'
 				/>
 			) : null}
-			<span className='pointer-events-none relative flex min-w-0 flex-1 items-center gap-2.5'>
+			<span className={cn('pointer-events-none relative flex min-w-0 flex-1 items-center gap-2.5', stackOnMobile && 'basis-full sm:basis-0')}>
 				{icon}
 				<span className='flex min-w-0 flex-1 flex-col gap-1'>
 					<span className='truncate text-14 leading-none font-medium -tracking-2 text-white/90'>{title}</span>
 					{description ? <span className='truncate text-12 leading-tight -tracking-2 text-white/40'>{description}</span> : null}
 				</span>
 			</span>
-			{children ? <div className='pointer-events-none relative flex shrink-0 items-center'>{children}</div> : null}
+			{children ? <div className={cn('pointer-events-none relative flex shrink-0 items-center', stackOnMobile && 'w-full sm:w-auto')}>{children}</div> : null}
 		</div>
 	)
 }

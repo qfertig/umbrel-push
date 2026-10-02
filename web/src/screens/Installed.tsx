@@ -110,7 +110,7 @@ export function Installed({
 	return (
 		<div className='flex h-full min-h-0 flex-col px-3 pt-6 md:px-[40px] md:pt-12 xl:px-[60px]'>
 			<h1 className='shrink-0 pb-6 text-36 leading-none font-bold -tracking-4 text-white/90 md:pb-8'>Umbrel Push</h1>
-			<div className='grid min-h-0 flex-1 items-start gap-[34px] lg:grid-cols-[286px_minmax(0,1fr)]'>
+			<div className='grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)] items-start gap-[34px] lg:grid-cols-[286px_minmax(0,1fr)]'>
 				<aside aria-label='Server' className='umbrel-hide-scrollbar min-h-0 overscroll-contain lg:h-full lg:overflow-y-auto lg:pb-24'>
 					<div className='flex flex-col gap-3'>
 						<SummaryCard rows={summary} />
@@ -151,9 +151,9 @@ export function Installed({
 				</aside>
 
 				<div className='flex min-h-0 flex-col lg:h-full'>
-					<div className='mb-3 flex shrink-0 items-center justify-between gap-3'>
-						<FilterPills value={source} onValueChange={setSource} tabs={tabs} ariaLabel='Filter apps by source' />
-						<SearchField value={query} onChange={setQuery} label='Filter by name or ID' disabled={!connected} />
+					<div className='mb-3 flex shrink-0 flex-wrap items-center justify-between gap-3'>
+						<FilterPills value={source} onValueChange={setSource} tabs={tabs} ariaLabel='Filter apps by source' className='max-w-full' />
+						<SearchField value={query} onChange={setQuery} label='Filter by name or ID' disabled={!connected} className='w-full sm:w-[220px]' />
 					</div>
 					<div className='umbrel-scrollbar min-h-0 flex-1 overscroll-contain pb-24 lg:overflow-y-auto lg:pr-1'>
 						{error ? (
@@ -244,6 +244,7 @@ function AppRow({
 	return (
 		<ListRow
 			onClick={() => onSelect(app)}
+			stackOnMobile
 			label={`${info.name}, ${info.stateText}. Show details`}
 			icon={<ListIcon>{icon ? <img src={icon} alt='' referrerPolicy='no-referrer' className='size-full object-cover' /> : info.name.slice(0, 1).toUpperCase()}</ListIcon>}
 			title={info.name}
@@ -274,7 +275,7 @@ function AppRow({
 					</Button>
 				</div>
 			) : (
-				<div className='flex items-center gap-5 text-13 font-medium'>
+				<div className='flex w-full items-center justify-between gap-5 text-13 font-medium sm:w-auto sm:justify-start'>
 					<div className='hidden items-center gap-4 xl:flex'>
 						<Meter
 							label='RAM'
@@ -298,7 +299,7 @@ function AppRow({
 							}
 						/>
 					</div>
-					<span className={cn('w-[74px] text-right', working ? 'text-white/55' : toneClass[info.tone])}>
+					<span className={cn('w-[74px] sm:text-right', working ? 'text-white/55' : toneClass[info.tone])}>
 						{working ? `${lifecycleCopy[working].doing}…` : info.stateText}
 					</span>
 					<span className='hidden w-12 text-right font-mono text-white/70 sm:block'>{app.port ?? '-'}</span>

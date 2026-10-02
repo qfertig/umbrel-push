@@ -43,7 +43,7 @@ export function ImageField({image, onChange, id}: {image: string; onChange: (ima
 				id={id}
 				aria-label='Image'
 				sizeVariant='short'
-				className='min-w-[220px] flex-1 font-mono text-12'
+				className='min-w-[min(220px,100%)] flex-1 font-mono text-12'
 				value={repository}
 				onChange={(event) => onChange(joinImage(event.target.value, tag))}
 				placeholder='organization/image'
