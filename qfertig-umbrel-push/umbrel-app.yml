@@ -2,7 +2,7 @@ manifestVersion: 1
 id: qfertig-umbrel-push
 category: developer
 name: Umbrel Push
-version: "0.1.1"
+version: "0.1.2"
 tagline: Edit and push a single app on this Umbrel
 icon: https://raw.githubusercontent.com/qfertig/umbrel-push/main/qfertig-umbrel-push/icon.svg
 description: >-

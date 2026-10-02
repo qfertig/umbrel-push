@@ -129,7 +129,8 @@ export function ConnectDialog({
 								value={password}
 								onChange={(event) => setPassword(event.target.value)}
 								autoFocus={Boolean(host)}
-								autoComplete='off'
+								name='password'
+								autoComplete='current-password'
 								disabled={busy}
 							/>
 						</Labeled>
