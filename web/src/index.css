@@ -1,0 +1,337 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/*
+  Tokens and surface recipes adapted from the umbrelOS web interface (getumbrel/umbrel, packages/ui:
+  index.css and tailwind.config.ts). See ../../NOTICE for the licence that applies to them.
+  The wallpaper and the brand colour are this project's own; umbrelOS derives the brand colour from the
+  wallpaper, so --brand below is the hue of public/wallpaper.svg.
+*/
+
+@font-face {
+	font-family: 'Inter';
+	src: url('/fonts/Inter-Variable.ttf') format('truetype');
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@theme {
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'Cascadia Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+	--radius-3: 3px;
+	--radius-4: 4px;
+	--radius-5: 5px;
+	--radius-6: 6px;
+	--radius-8: 8px;
+	--radius-10: 10px;
+	--radius-12: 12px;
+	--radius-15: 15px;
+	--radius-17: 17px;
+	--radius-20: 20px;
+	--radius-24: 24px;
+
+	--text-9: 9px;
+	--text-11: 11px;
+	--text-12: 12px;
+	--text-13: 13px;
+	--text-14: 14px;
+	--text-15: 15px;
+	--text-16: 16px;
+	--text-17: 17px;
+	--text-19: 19px;
+	--text-24: 24px;
+	--text-32: 32px;
+	--text-36: 36px;
+	--text-48: 48px;
+	--text-56: 56px;
+
+	--tracking-1: 0.01em;
+	--tracking-2: 0.02em;
+	--tracking-3: 0.03em;
+	--tracking-4: 0.04em;
+
+	--leading-inter-trimmed: 0.73;
+
+	--color-brand: hsl(var(--color-brand-hsl));
+	--color-brand-lighter: hsl(var(--color-brand-lighter-hsl));
+	--color-brand-lightest: hsl(var(--color-brand-lightest-hsl));
+	--color-ring: var(--focus-ring);
+	--color-destructive: #e03e3e;
+	--color-destructive2: #e22c2c;
+	--color-destructive2-lighter: #f53737;
+	--color-destructive2-lightest: #f45a5a;
+	--color-success: #299e16;
+	--color-success-light: #51cb41;
+	--color-dialog-content: #1e1e1e;
+
+	--shadow-glass-button:
+		1px 0 0 0 rgba(255, 255, 255, 0.04) inset, -1px 0 0 0 rgba(255, 255, 255, 0.04) inset,
+		0 1px 0 0 rgba(255, 255, 255, 0.2) inset, 0 0.5px 0 0 rgba(255, 255, 255, 0.1) inset;
+	--shadow-button-highlight: 0 1px 0 0 rgba(255, 255, 255, 0.3) inset;
+	--shadow-button-highlight-hpx: 0 0.5px 0 0 rgba(255, 255, 255, 0.3) inset;
+	--shadow-button-highlight-soft: 0 1px 0 0 rgba(255, 255, 255, 0.1) inset;
+	--shadow-button-highlight-soft-hpx: 0 0.5px 0 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+@utility border-px {
+	border-width: 1px;
+}
+
+@utility border-hpx {
+	border-width: 0.5px;
+}
+
+:root {
+	--sheet-top: 2vh;
+
+	/* Brand colour as an HSL triple, derived from the wallpaper; lighter steps are +8 and +16 lightness like umbrelOS */
+	--color-brand-hsl: 27 84% 58%;
+	--color-brand-lighter-hsl: 27 84% 66%;
+	--color-brand-lightest-hsl: 27 84% 74%;
+
+	--settings-tone-1: 27 84% 62%;
+	--settings-tone-2: 27 84% 48%;
+	--settings-tone-3: 27 84% 34%;
+	--settings-tone-4: 27 84% 20%;
+	--settings-tone-5: 27 84% 10%;
+	--settings-tone-6: 27 84% 2%;
+
+	/* Keyboard focus ring */
+	--focus-ring: rgb(255 255 255 / 0.25);
+
+	/* System material recipe */
+	--material-tint-rgb: 0 0 0;
+	--material-tint-opacity: 0.4;
+	--material-blur: 20px;
+	--material-saturation: 120%;
+	--material-brightness: 85%;
+	--material-border-width: 0.5px;
+	--material-border-opacity: 0.1;
+	--material-shine-opacity: 0.2;
+	--material-shadow-opacity: 0.5;
+	--material-shadow-y: 14px;
+	--material-shadow-blur: 34px;
+	--material-context-menu-radius: 20px;
+	--material-dropdown-radius: 20px;
+	--material-popover-radius: 20px;
+	--material-modal-radius: 24px;
+	--material-item-radius: 16px;
+	--material-toast-radius: 18px;
+
+	/* Window surface recipe */
+	--window-radius: 40px;
+	--window-edge-width: 0.5px;
+	--window-edge-opacity: 0.08;
+	--window-shine-opacity: 0.25;
+	--window-background-tint-rgb: 0 0 0;
+	--window-background-tint-opacity: 0.7;
+	--window-background-blur: 40px;
+	--window-background-saturation: 150%;
+	--window-background-brightness: 70%;
+	--window-background-shadow-opacity: 0.8;
+	--window-background-shadow-y: 10px;
+	--window-background-shadow-blur: 64px;
+}
+
+@media (width < 1024px) {
+	:root {
+		--window-radius: 24px;
+	}
+}
+
+@layer base {
+	body {
+		@apply antialiased;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--focus-ring, rgb(255 255 255 / 0.25));
+		outline-offset: 0;
+	}
+}
+
+/* Only html is painted: a body background would cover the fixed wallpaper layer behind it */
+html {
+	background: #000;
+}
+
+html,
+body {
+	height: 100%;
+	font-family: var(--font-sans);
+	/* To match Figma weight */
+	text-rendering: geometricPrecision;
+	@apply -tracking-3 text-white/90;
+}
+
+/* Native-app feel for chrome; ids, versions and logs opt back in with select-text */
+body {
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+img,
+a {
+	-webkit-user-drag: none;
+}
+
+a,
+button,
+[role='button'] {
+	cursor: default;
+}
+
+input,
+textarea {
+	-webkit-user-select: text;
+	user-select: text;
+}
+
+@layer components {
+	.umbrel-material {
+		-webkit-backdrop-filter: blur(var(--material-blur)) saturate(var(--material-saturation))
+			brightness(var(--material-brightness));
+		backdrop-filter: blur(var(--material-blur)) saturate(var(--material-saturation)) brightness(var(--material-brightness));
+		box-shadow:
+			1px 0 0 rgb(255 255 255 / calc(var(--material-shine-opacity) * 0.3)) inset,
+			-1px 0 0 rgb(255 255 255 / calc(var(--material-shine-opacity) * 0.3)) inset,
+			0 1px 0 rgb(255 255 255 / var(--material-shine-opacity)) inset,
+			0 0.5px 0 rgb(255 255 255 / calc(var(--material-shine-opacity) * 0.5)) inset,
+			0 var(--material-shadow-y) var(--material-shadow-blur) rgb(0 0 0 / var(--material-shadow-opacity));
+		border: var(--material-border-width) solid rgb(255 255 255 / var(--material-border-opacity));
+		background-clip: padding-box;
+		background-color: rgb(var(--material-tint-rgb) / var(--material-tint-opacity));
+	}
+
+	.umbrel-material-modal {
+		border-radius: var(--material-modal-radius);
+	}
+
+	.umbrel-material-dropdown {
+		border-radius: var(--material-dropdown-radius);
+	}
+
+	.umbrel-window-surface-top {
+		border-top-right-radius: var(--window-radius);
+		border-top-left-radius: var(--window-radius);
+	}
+
+	/* The window surface: the same recipe umbrelOS applies behind sheets, as a live backdrop filter */
+	.umbrel-window-glass {
+		-webkit-backdrop-filter: blur(var(--window-background-blur)) saturate(var(--window-background-saturation))
+			brightness(var(--window-background-brightness));
+		backdrop-filter: blur(var(--window-background-blur)) saturate(var(--window-background-saturation))
+			brightness(var(--window-background-brightness));
+		background-color: rgb(var(--window-background-tint-rgb) / var(--window-background-tint-opacity));
+		box-shadow: 0 var(--window-background-shadow-y) var(--window-background-shadow-blur)
+			rgb(0 0 0 / var(--window-background-shadow-opacity));
+	}
+
+	.umbrel-window-chrome {
+		box-shadow:
+			1px 0 0 rgb(255 255 255 / calc(var(--window-shine-opacity) * 0.3)) inset,
+			-1px 0 0 rgb(255 255 255 / calc(var(--window-shine-opacity) * 0.3)) inset,
+			0 1px 0 rgb(255 255 255 / var(--window-shine-opacity)) inset,
+			0 0.5px 0 rgb(255 255 255 / calc(var(--window-shine-opacity) * 0.5)) inset;
+		border: var(--window-edge-width) solid rgb(255 255 255 / var(--window-edge-opacity));
+		border-bottom-width: 0;
+	}
+
+	/* Rows darken progressively down each section, bottoming out at tone 6 */
+	.settings-list-group > .settings-list-row {
+		--settings-row-tone: var(--settings-tone-6);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(1) {
+		--settings-row-tone: var(--settings-tone-1);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(2) {
+		--settings-row-tone: var(--settings-tone-2);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(3) {
+		--settings-row-tone: var(--settings-tone-3);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(4) {
+		--settings-row-tone: var(--settings-tone-4);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(5) {
+		--settings-row-tone: var(--settings-tone-5);
+	}
+
+	.settings-list-group > .settings-list-row:nth-child(6) {
+		--settings-row-tone: var(--settings-tone-6);
+	}
+
+	.settings-list-icon {
+		box-shadow: 0 1px 0 rgb(255 255 255 / 0.28) inset;
+		background:
+			linear-gradient(to bottom, rgb(255 255 255 / 0.18), rgb(0 0 0 / 0.28)),
+			hsl(var(--settings-row-tone));
+	}
+
+	.settings-edge-material {
+		box-shadow:
+			0 4px 8px rgb(0 0 0 / 0.1),
+			0 1px 0 rgb(255 255 255 / 0.08) inset,
+			0 0.5px 0 rgb(255 255 255 / 0.027) inset,
+			0 -1px 0 rgb(0 0 0 / 0.12) inset;
+		border: 0.1px solid rgb(255 255 255 / 0.04);
+		background-color: rgb(255 255 255 / 0.03);
+	}
+
+	.umbrel-hide-scrollbar {
+		scrollbar-width: none;
+	}
+
+	.umbrel-hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.umbrel-scrollbar {
+		scrollbar-width: thin;
+		scrollbar-color: rgb(255 255 255 / 0.2) transparent;
+	}
+
+	/* Sheet opens from the bottom edge and settles; one motion on load, nothing else animates on its own */
+	.umbrel-sheet-zoom {
+		transform-origin: 50% 100%;
+		animation: umbrel-sheet-in 300ms cubic-bezier(0.23, 1, 0.32, 1) both;
+	}
+}
+
+@keyframes umbrel-sheet-in {
+	from {
+		opacity: 0;
+		transform: translateY(32px) scale(0.985);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+	.umbrel-material {
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+		background-color: rgb(var(--material-tint-rgb) / 0.9);
+	}
+
+	.umbrel-window-glass {
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+		background-color: rgb(var(--window-background-tint-rgb) / 0.9);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.umbrel-sheet-zoom {
+		animation: none;
+	}
+}

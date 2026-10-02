@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: qfertig-umbrel-push
+category: developer
+name: Umbrel Push
+version: "0.1.0"
+tagline: Edit and push a single app on this Umbrel
+icon: https://raw.githubusercontent.com/qfertig/umbrel-push/main/qfertig-umbrel-push/icon.svg
+description: >-
+  Open any installed app's package in a settings form or a YAML editor, see exactly what will change, and push it.
+  Change an image tag, a port, a volume or an environment variable without a terminal. Docker Hub versions are
+  listed for each image, and a diff is shown before anything changes.
+
+
+  Umbrel Push connects to this Umbrel over SSH, using your Umbrel password for sudo and for the first-time key
+  setup. The password stays in memory until you disconnect and is never written to disk.
+
+
+  This is an independent project, not made or endorsed by Umbrel.
+developer: qfertig
+website: https://github.com/qfertig/umbrel-push
+dependencies: []
+repo: https://github.com/qfertig/umbrel-push
+support: https://github.com/qfertig/umbrel-push/issues
+port: 18930
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: qfertig
+submission: https://github.com/qfertig/umbrel-push

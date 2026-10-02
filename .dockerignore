@@ -1,0 +1,9 @@
+.git
+.github
+**/node_modules
+web/dist
+**/__pycache__
+tests
+workspaces
+*.md
+qfertig-umbrel-push

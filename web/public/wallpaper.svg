@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1500" preserveAspectRatio="xMidYMid slice">
+	<defs>
+		<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#0a0920"/>
+			<stop offset="0.32" stop-color="#27153f"/>
+			<stop offset="0.52" stop-color="#7a3150"/>
+			<stop offset="0.66" stop-color="#d2693f"/>
+			<stop offset="0.72" stop-color="#f0a455"/>
+		</linearGradient>
+		<radialGradient id="sun" cx="1480" cy="1010" r="760" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#ffe3b0" stop-opacity="0.95"/>
+			<stop offset="0.35" stop-color="#ffb066" stop-opacity="0.55"/>
+			<stop offset="1" stop-color="#ff8a4a" stop-opacity="0"/>
+		</radialGradient>
+		<filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="38"/></filter>
+		<filter id="softer" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="16"/></filter>
+		<linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#b95a3e" stop-opacity="0.7"/>
+			<stop offset="1" stop-color="#1a0f24" stop-opacity="0.95"/>
+		</linearGradient>
+	</defs>
+	<rect width="2400" height="1500" fill="url(#sky)"/>
+	<g fill="#fff" opacity="0.8">
+		<circle cx="210" cy="140" r="2"/><circle cx="520" cy="260" r="1.6"/><circle cx="820" cy="90" r="2.2"/>
+		<circle cx="1130" cy="210" r="1.6"/><circle cx="1390" cy="120" r="2"/><circle cx="1710" cy="300" r="1.8"/>
+		<circle cx="2010" cy="160" r="2.2"/><circle cx="2250" cy="330" r="1.6"/><circle cx="380" cy="420" r="1.4"/>
+		<circle cx="960" cy="410" r="1.4"/><circle cx="1880" cy="470" r="1.4"/>
+	</g>
+	<g filter="url(#soft)">
+		<ellipse cx="560" cy="640" rx="520" ry="70" fill="#d77f93" opacity="0.55"/>
+		<ellipse cx="1900" cy="560" rx="560" ry="80" fill="#c46a8a" opacity="0.5"/>
+		<ellipse cx="1220" cy="760" rx="640" ry="60" fill="#ffc27a" opacity="0.6"/>
+	</g>
+	<rect width="2400" height="1500" fill="url(#sun)"/>
+	<rect y="1010" width="2400" height="490" fill="url(#water)"/>
+	<g filter="url(#softer)" opacity="0.7">
+		<ellipse cx="1480" cy="1070" rx="300" ry="14" fill="#ffd9a0"/>
+		<ellipse cx="1480" cy="1130" rx="200" ry="10" fill="#ffc27a"/>
+		<ellipse cx="1480" cy="1200" rx="120" ry="8" fill="#e99a5a"/>
+	</g>
+	<path d="M0 1010 L180 930 L330 985 L520 880 L760 1000 L930 940 L1180 1010 Z" fill="#3a2149" opacity="0.92"/>
+	<path d="M1250 1010 L1500 950 L1700 990 L1960 860 L2150 960 L2400 900 L2400 1010 Z" fill="#33203f" opacity="0.92"/>
+	<path d="M0 1500 L0 1150 L260 1080 L470 1120 L760 1040 L1010 1100 L1290 1060 L1560 1130 L1830 1070 L2120 1140 L2400 1090 L2400 1500 Z" fill="#150c20"/>
+	<path d="M0 1500 L0 1300 L340 1250 L690 1290 L1080 1240 L1480 1300 L1890 1250 L2400 1310 L2400 1500 Z" fill="#0c0714"/>
+</svg>

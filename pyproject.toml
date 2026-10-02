@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "umbrel-push"
+version = "0.1.0"
+description = "Edit and push individual Umbrel app packages over SSH, from a local web page"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = ["PyYAML>=6.0.2,<7", "ruamel.yaml>=0.18,<0.19"]
+
+[project.scripts]
+umbrel-push = "umbrel_push.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["umbrel_push*", "server*"]

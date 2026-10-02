@@ -1,0 +1,25 @@
+Umbrel Push (web)
+
+The interface in web/ adapts material from the umbrelOS web interface:
+  https://github.com/getumbrel/umbrel  (packages/ui, read at commit 11e7f5b, 2026-09-22)
+  License: PolyForm Noncommercial License 1.0.0
+           https://polyformproject.org/licenses/noncommercial/1.0.0
+
+Adapted, with changes, from that project:
+  - the design tokens in tailwind.config.ts (radii, type sizes, tracking, shadows, colours), in web/src/index.css
+  - the surface recipes in index.css (umbrel-material, window glass and chrome, settings-edge-material, settings list
+    group and icon tiles), in web/src/index.css
+  - the class strings and structure of the button, segmented control and filter pills, search field, input, dialog,
+    settings list row and settings summary, in web/src/components/ and web/src/screens/Installed.tsx
+  - the layout of the Settings page and the sheet window (layouts/sheet.tsx)
+
+Not taken: umbrelOS logos, wordmarks, icons, app artwork and wallpapers. public/wallpaper.svg and public/icon.svg are
+original to this project. The glass lens (WebGL and SVG refraction), the dock and the sheet animations are not included.
+
+Anyone who receives a copy of this project receives it under the same noncommercial terms: personal use, study and free
+sharing are allowed; selling it or using it commercially is not, without permission from the umbrelOS authors
+(partner@umbrel.com). This project is independent and is not an official Umbrel product.
+
+Inter (web/public/fonts/Inter-Variable.ttf)
+  Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
+  Licensed under the SIL Open Font License 1.1; the full text is in web/public/fonts/OFL.txt.

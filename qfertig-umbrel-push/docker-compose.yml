@@ -1,0 +1,19 @@
+services:
+  app_proxy:
+    environment:
+      APP_HOST: qfertig-umbrel-push_web_1
+      APP_PORT: 8765
+
+  web:
+    image: ghcr.io/qfertig/umbrel-push:latest
+    restart: on-failure
+    user: "1000:1000"
+    stop_grace_period: 1m
+    environment:
+      # Prefills the Connect dialog. The container reaches the Umbrel itself through this name.
+      UMBREL_PUSH_DEFAULT_HOST: host.docker.internal
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      # The SSH key Umbrel Push creates for this Umbrel, and its known_hosts file
+      - ${APP_DATA_DIR}/data:/data
